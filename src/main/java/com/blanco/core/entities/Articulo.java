@@ -1,14 +1,12 @@
 package com.blanco.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,8 +14,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Builder
-
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "tbl_articulo")
 public class Articulo implements Serializable {
+
+    private static final long serialVersionUID = 20200816121023L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

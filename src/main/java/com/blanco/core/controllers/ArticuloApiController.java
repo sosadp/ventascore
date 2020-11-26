@@ -17,7 +17,7 @@ import org.modelmapper.ModelMapper;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/articulo")
 public class ArticuloApiController {
 
     public static Logger LOGGER = LoggerFactory.getLogger(ArticuloApiController.class);
@@ -27,7 +27,7 @@ public class ArticuloApiController {
     @Autowired
     ArticuloServices articuloServices;
 
-    @PostMapping
+    @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> createArticulo(@RequestBody ArticuloDTO articuloDTO, UriComponentsBuilder ucBuilder){
         LOGGER.info("Iniciando creacion de Articulo");
         final Articulo articulo = this.modelMapper.map(articuloDTO,Articulo.class);
@@ -40,13 +40,13 @@ public class ArticuloApiController {
 
         HttpHeaders headers = new HttpHeaders();
 
-        headers.setLocation(ucBuilder.path("/articulo/{id}").buildAndExpand(articulo.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/{id}").buildAndExpand(articulo.getId()).toUri());
 
         return new ResponseEntity<String>(headers,HttpStatus.ACCEPTED);
     }
 
 
-    @GetMapping("/articulo")
+    @GetMapping(value = "/", produces = "application/json")
     public ResponseEntity<List<Articulo>> listAllArticulos(){
         LOGGER.info("Obteniendo la lista de Articulos");
 
