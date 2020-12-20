@@ -1,7 +1,6 @@
 package com.blanco.core.services;
 
 import com.blanco.core.entities.Articulo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
