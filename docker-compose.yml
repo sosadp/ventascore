@@ -1,0 +1,51 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ventas-postgres
+    environment:
+      POSTGRES_DB: ventasdb
+      POSTGRES_USER: ventas_user
+      POSTGRES_PASSWORD: ventas_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - ventas_data:/var/lib/postgresql/data
+    networks:
+      - ventas-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: ventas-mysql
+    environment:
+      MYSQL_DATABASE: ventasdb
+      MYSQL_USER: ventas_user
+      MYSQL_PASSWORD: ventas_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ventas-net
+
+#  app:
+#    build: .
+#    container_name: ventas-app
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ventasdb
+#      SPRING_DATASOURCE_USERNAME: ventas_user
+#      SPRING_DATASOURCE_PASSWORD: ventas_pass
+#    ports:
+#      - "8082:8082"
+#    depends_on:
+#      - postgres
+#    networks:
+#      - ventas-net
+
+volumes:
+  ventas_data:
+  mysql_data:
+
+networks:
+  ventas-net:

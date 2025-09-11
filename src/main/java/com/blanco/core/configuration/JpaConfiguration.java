@@ -24,19 +24,21 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-import javax.persistence.EntityManagerFactory;
+//import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
+/*
 @Configuration
 @EnableJpaRepositories(basePackages = "com.blanco.core.repositories",
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager")
 @EnableTransactionManagement
+*/
 public class JpaConfiguration {
 
     public static Logger LOGGER = LoggerFactory.getLogger(JpaConfiguration.class);
 
-    @Autowired
+    /*@Autowired
     private Environment environment;
 
     @Value("${datasource.ventasapp.maxPoolSize:10}")
@@ -105,5 +107,5 @@ public class JpaConfiguration {
         JpaTransactionManager txManager= new JpaTransactionManager();
         txManager.setEntityManagerFactory(emf);
         return txManager;
-    }
+    }*/
 }
