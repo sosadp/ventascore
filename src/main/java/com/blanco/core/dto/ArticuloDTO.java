@@ -1,20 +1,13 @@
 package com.blanco.core.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class ArticuloDTO implements Serializable {
-
-    private Long id;
-    private String nombre;
-    private String descripcion;
-
+public record ArticuloDTO(
+    Long id,
+    String nombre,
+    String descripcion
+) implements Serializable {
 }

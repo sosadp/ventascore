@@ -18,9 +18,9 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tbl_articulo")
 public class Articulo implements Serializable {
-
+    
     private static final long serialVersionUID = 20200816121023L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
